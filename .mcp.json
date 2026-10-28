@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "hatchzip-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}

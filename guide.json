@@ -1,0 +1,103 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "hatchzip",
+    "nameCn": "HatchZip",
+    "repoName": "hatchzip-deploy-guide",
+    "oneLiner": "2.2k stars，Apache-2.0，原地解压 ZIP/7z/RAR/tar 的解压工具",
+    "officialRepo": "https://github.com/xevrion/hatchzip",
+    "officialDocs": "https://github.com/xevrion/hatchzip/blob/main/README.md",
+    "stars": "2.2k",
+    "license": "Apache-2.0",
+    "highlights": [
+      "原地解压：压缩包边解边缩小，峰值占用接近输出大小",
+      "格式覆盖：ZIP、7z、tar、tar.gz、RAR 分卷与分卷压缩包",
+      "安全前置：动手前先算空间，空间不够直接拒绝",
+      "断点续解：随时停止或崩溃，下次从断点继续",
+      "桌面 + CLI：右键菜单、图形界面与 hatchzip / hz 命令",
+      "完整校验：解压结果逐字节比对，失败可恢复"
+    ],
+    "mcpSupport": "HatchZip 不含 MCP；本仓库的 MCP 只提供安装步骤、空间计算与常见问题，不参与解压。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-28",
+    "verification": [
+      [
+        "README 确认官方安装脚本会按平台下载并校验 SHA256",
+        "已核对 2026-10-28"
+      ],
+      [
+        "Release v0.1.7 的资产清单与校验文件已核对",
+        "已核对 2026-10-28"
+      ],
+      [
+        "未实测解压大文件（本机没有接近满盘的测试环境）",
+        "说明 2026-10-28"
+      ],
+      [
+        "非目标宿主调用被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-10-28"
+      ]
+    ],
+    "deploy": {
+      "type": "binary",
+      "steps": [
+        "curl -fsSL https://raw.githubusercontent.com/xevrion/hatchzip/main/install.sh | sh",
+        "command -v hatchzip >/dev/null 2>&1 || { echo \"安装后没找到 hatchzip，请重开终端或检查 PATH\"; exit 1; }",
+        "echo \"安装完成：运行 hatchzip --help 查看命令，或右键压缩包选 HatchZip\""
+      ],
+      "stepsPs": [
+        "irm https://raw.githubusercontent.com/xevrion/hatchzip/main/install.ps1 | iex",
+        "if (-not (Get-Command hatchzip -ErrorAction SilentlyContinue)) { throw '安装后没找到 hatchzip，请重开终端或检查 PATH' }",
+        "Write-Host '安装完成：运行 hatchzip --help 查看命令，或右键压缩包选 HatchZip'"
+      ],
+      "source": "https://github.com/xevrion/hatchzip#installation"
+    },
+    "pitfalls": [
+      "Windows 提示已保护你的电脑：点「更多信息 → 仍要运行」，安装包尚未签名",
+      "macOS 打不开：到系统设置 → 隐私与安全性里允许一次",
+      "解压前没空间：先跑 hatchzip check，确认剩余空间大于输出大小",
+      "想保留压缩包：用 --keep，或在设置里关闭「解压时删除压缩包」",
+      "7z 被拒绝：单 solid block 无法边解边释放，换分卷或先腾空间",
+      "命令找不到：重开终端；安装脚本只装到用户目录，不写系统 PATH",
+      "中断后不敢继续：直接重跑同一命令，会从断点续解"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/hatchzip-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/hatchzip-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "HatchZip 安装",
+    "HatchZip 教程",
+    "原地解压 工具",
+    "小硬盘 解压",
+    "7z 分卷 解压",
+    "RAR 解压 开源",
+    "HatchZip CLI",
+    "Windows 解压 工具",
+    "HatchZip 中文",
+    "hatchzip deploy guide"
+  ],
+  "topics": [
+    "archive",
+    "extractor",
+    "zip",
+    "rust",
+    "cli",
+    "windows"
+  ]
+}
